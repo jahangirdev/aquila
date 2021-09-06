@@ -14,5 +14,10 @@
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-<?php wp_body_open(); ?>
+<?php
+if (function_exists('wp_body_open')){
+    wp_body_open();
+}
+
+?>
 <header>Header</header>
