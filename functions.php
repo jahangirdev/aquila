@@ -5,8 +5,15 @@
  * @package Aquila
  */
 if(! defined('AQUILA_PATH_DIR')){
-    define('AQUILA_PATH_DIR', untrailingslashit(get_template_directory()));
+    define('AQUILA_DIR_PATH', untrailingslashit(get_template_directory()));
 }
+require_once AQUILA_DIR_PATH.'/inc/helpers/autoloader.php';
+
+function aquila_get_theme_instance(){
+   \AQUILA_THEME\Inc\AQUILA_THEME::get_instance();
+}
+aquila_get_theme_instance();
+
 add_theme_support('title-tag');
 function aquila_enqueue_scripts(){
 //    register styles
