@@ -4,6 +4,9 @@
  *
  * @package Aquila
  */
+if(! defined('AQUILA_PATH_DIR')){
+    define('AQUILA_PATH_DIR', untrailingslashit(get_template_directory()));
+}
 add_theme_support('title-tag');
 function aquila_enqueue_scripts(){
 //    register styles
