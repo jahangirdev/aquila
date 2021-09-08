@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Theme functions
  *
  * @package Aquila
@@ -12,7 +12,7 @@ function aquila_enqueue_scripts(){
     wp_register_style("another-style", get_template_directory_uri().'/assets/css/another.css', array(), filemtime(get_template_directory().'/assets/css/another.css'), 'all');
 
 //    Register scripts
-    wp_register_script("bootstrap-js", get_template_directory_uri().'/assets/libraries/bootstrap/js/bootstrap.bungle.min.js', array(), false, true);
+    wp_register_script("bootstrap-js", get_template_directory_uri().'/assets/libraries/bootstrap/js/bootstrap.bundle.min.js', array(), false, true);
     wp_register_script("main-js", get_template_directory_uri().'/assets/js/main.js', array(), filemtime(get_template_directory().'/assets/js/main.js'), true);
 
 //    enqueue styles
