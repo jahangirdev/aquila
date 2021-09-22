@@ -16,8 +16,3 @@ function aquila_get_theme_instance(){
    \AQUILA_THEME\Inc\AQUILA_THEME::get_instance();
 }
 aquila_get_theme_instance();
-
-add_theme_support('title-tag');
-function aquila_enqueue_scripts(){
-
-}
