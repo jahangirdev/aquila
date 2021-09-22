@@ -50,7 +50,6 @@ trait Singleton
         if (!isset($instance[$called_class])) {
 
             $instance[$called_class] = new $called_class();
-            wp_die("Hello");
 
             /**
              * Dependent items can use the `aquila_theme_singleton_init_{$called_class}` hook to execute code

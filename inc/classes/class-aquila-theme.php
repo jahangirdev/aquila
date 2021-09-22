@@ -9,9 +9,12 @@ use AQUILA_THEME\Inc\Traits\Singleton;
 class AQUILA_THEME{
     use Singleton;
     protected function __construct(){
-        //load classes
+        //load class
+        $this->setup_hooks();
+        Assets::get_instance();
     }
-    protected function set_hooks(){
+    protected function setup_hooks(){
         //actions and filters
     }
+
 }
