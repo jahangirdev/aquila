@@ -44,3 +44,9 @@
         </div>
     </div>
 </nav>
+<?php
+wp_nav_menu(array(
+        'theme_loaction' => 'aquila-header-menu',
+        'container_class' => 'navbar navbar-expand-lg navbar-light bg-light'
+));
+?>

@@ -7,7 +7,7 @@ namespace AQUILA_THEME\inc;
 
 use AQUILA_THEME\Inc\Traits\Singleton;
 
-class Assets{
+class Menus{
     use Singleton;
     protected function __construct(){
         //load class
@@ -15,27 +15,12 @@ class Assets{
     }
     protected function setup_hooks(){
         //actions and filters
-        add_action('wp_enqueue_scripts', [$this, 'register_styles']);
-        add_action('wp_enqueue_scripts', [$this, 'register_scripts']);
+        add_action('init', [$this ,'register_menus']);
     }
-    public function register_styles() {
-        //    register styles
-        wp_register_style("bootstrap-css", AQUILA_DIR_URI.'/assets/libraries/bootstrap/css/bootstrap.min.css', [], false, 'all');
-        wp_register_style('stylesheet', get_stylesheet_uri(),[],filemtime(get_stylesheet_directory().'/style.css'),'all');
-        wp_register_style("another-style", AQUILA_DIR_URI.'/assets/css/another.css', [], filemtime(get_template_directory().'/assets/css/another.css'), 'all');
-
-        //    enqueue styles
-        wp_enqueue_style("bootstrap-css");
-        wp_enqueue_style("stylesheet");
-        wp_enqueue_style("another-style");
-    }
-    public function register_scripts() {
-        //    Register scripts
-        wp_register_script("bootstrap-js", AQUILA_DIR_URI.'/assets/libraries/bootstrap/js/bootstrap.bundle.min.js', [], false, true);
-        wp_register_script("main-js", AQUILA_DIR_URI.'/assets/js/main.js', [], filemtime(get_template_directory().'/assets/js/main.js'), true);
-
-        //    enqueue scripts
-        wp_enqueue_script("bootstrap-js");
-        wp_enqueue_script("main-js");
+    public function register_menus(){
+        register_nav_menus([
+            'aquila-header-menu' => __('Header Menu', 'aquila'),
+            'aquila-footer-menu' => __('Footer Menu', 'aquila')
+        ]);
     }
 }
