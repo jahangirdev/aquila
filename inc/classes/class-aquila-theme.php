@@ -28,6 +28,7 @@ class AQUILA_THEME{
             'flex-width' => true,
         ]);
         add_theme_support('post-thumbnails');
+        add_image_size( 'featured-thumbnail', 354, 225, true );
         add_theme_support('customize-selective-refresh-widgets');
         add_theme_support('automatic-feed-links');
         add_theme_support('html5',[

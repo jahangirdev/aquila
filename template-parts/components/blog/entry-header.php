@@ -13,9 +13,9 @@ if( $post_thumbnail ){
         <?php
         the_post_custom_thumbnail(
             $post_id,
-            'featured-large',
+            'featured-thumbnail',
             [
-                'sizes' => '(max-width:590px) 590px, 425px',
+                'sizes' => '(max-width:590px) 354px, 225px',
                 'class' => 'attachment-featured-large card-img-top'
             ]
         );
