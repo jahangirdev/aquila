@@ -13,6 +13,7 @@ class AQUILA_THEME{
         $this->setup_hooks();
         Assets::get_instance();
         Menus::get_instance();
+        Meta_Boxes::get_instance();
     }
     protected function setup_hooks(){
         //actions and filters
