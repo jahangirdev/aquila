@@ -24,3 +24,9 @@ img {
     height: auto;
     max-width: 100%;
 }
+.updated:not(.published) {
+    display: none;
+}
+.nav-item:hover .dropdown-menu:not(.show){
+    display: block;
+}

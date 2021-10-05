@@ -12,7 +12,7 @@ get_header();
             ?>
             <section class="banner py-5">
                 <div class="container">
-                    <h2 class="page-title screen-reader-text"><?php echo single_post_title(); ?></h2>
+                    <h2 class="page-title"><?php echo single_post_title(); ?></h2>
                 </div>
             </section>
     <?php
