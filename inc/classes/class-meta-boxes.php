@@ -37,6 +37,11 @@ class Meta_Boxes {
     }
     public function custom_meta_box_html( $post ) {
         $value = get_post_meta( $post->ID, '_hide_page_title', true );
+
+        /**
+         * Use nonce for verification
+         */
+        wp_nonce_field( plugin_basename(__FILE__), 'aquila_hide_title_field_nonce');
         ?>
         <label for="aquila-field"><?php esc_html_e( 'Hide the page title', 'aquila' ); ?></label>
         <select name="aquila_hide_title_field" id="aquila-field" class="postbox">
@@ -47,6 +52,21 @@ class Meta_Boxes {
 <?php
     }
     public function save_post_meta_data( $post_id ) {
+        /**
+         * When the post is saved or updated we get $_POST available
+         * Check if the current user is authorized
+         */
+        if( ! current_user_can( 'edit_post', $post_id ) ) {
+            return;
+        }
+        /**
+         * Check if the nonce value we received is the same we created.
+         */
+        if( ! isset( $_POST['aquila_hide_title_field'] ) ||
+           ! wp_verify_nonce( $_POST['aquila_hide_title_field_nonce'], plugin_basename( __FILE__ )  )
+        ) {
+            return;
+        }
         if( array_key_exists( 'aquila_hide_title_field', $_POST ) ) {
             update_post_meta (
                 $post_id,
