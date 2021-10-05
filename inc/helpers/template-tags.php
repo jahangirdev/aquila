@@ -53,3 +53,17 @@ function aquila_posted_by() {
     );
     echo '<span class="byline text-secondary">'.$byline. '</span>';
 }
+function aquila_the_excerpt( $trim_character_count = 0 ) {
+    if( 0 === $trim_character_count ) {
+        the_excerpt();
+    }
+    else{
+        $excerpt = wp_strip_all_tags( get_the_excerpt() );
+        $excerpt = substr( $excerpt, 0, $trim_character_count );
+        $excerpt = substr( $excerpt, 0 , strrpos( $excerpt, ' '));
+        echo $excerpt. '[...]';
+    }
+}
+function aquila_read_more( $text = 'Read More'){
+    printf( '<a href="%1$s" class="btn btn-primary">%2$s</a>', get_the_permalink(), __($text, 'aquila'));
+}
