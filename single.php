@@ -15,20 +15,18 @@ get_header();
                     <h2 class="page-title"><?php echo single_post_title(); ?></h2>
                 </div>
             </section>
-    <?php
+            <?php
         }
-    ?>
-    <section class="main-content">
-        <div class="container">
-            <div class="row">
-                <?php
-                while( have_posts()) : the_post();
-                get_template_part('template-parts/content-loop');
-                endwhile;
-                ?>
+        ?>
+        <section class="main-content">
+            <div class="container">
+                    <?php
+                    while( have_posts()) : the_post();
+                        get_template_part('template-parts/content-single');
+                    endwhile;
+                    ?>
             </div>
-        </div>
-    </section>
+        </section>
     <?php
     else:
         get_template_part( 'template-parts/content-none' );
