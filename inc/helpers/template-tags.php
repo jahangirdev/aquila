@@ -67,3 +67,23 @@ function aquila_the_excerpt( $trim_character_count = 0 ) {
 function aquila_read_more( $text = 'Read More'){
     printf( '<a href="%1$s" class="btn btn-primary">%2$s</a>', get_the_permalink(), __($text, 'aquila'));
 }
+
+function aquila_pagination() {
+    $allowed_tags = [
+        'span' =>[
+            'class' => []
+        ],
+        'a' => [
+            'class' => [],
+            'href' => [],
+        ],
+    ];
+    $args = [
+        'before_page_number' => '<span class="btn border border-secondary mr-2 mb-2">',
+        'after_page_number' => '</span>',
+        'prev_text' => '<<PREV',
+        'next_text' => 'NEXT>>'
+    ];
+
+    printf( '<nav class="aquila-pagination clearfix">%s</nav>', wp_kses( paginate_links( $args ), $allowed_tags ) );
+}

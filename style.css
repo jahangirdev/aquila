@@ -30,3 +30,7 @@ img {
 .nav-item:hover .dropdown-menu:not(.show){
     display: block;
 }
+.page-numbers.current .btn{
+    background: #0D6EFD;
+    color: #fff;
+}

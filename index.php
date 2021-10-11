@@ -28,6 +28,9 @@ get_header();
                 ?>
             </div>
         </div>
+        <div class="container">
+            <?php aquila_pagination(); ?>
+        </div>
     </section>
     <?php
     else:
