@@ -16,6 +16,7 @@ class Sidebars{
     protected function setup_hooks(){
         //actions and filters
         add_action( 'widgets_init', [$this, 'register_sidebars'] );
+        add_action( 'widgets_init', [$this, 'register_clock_widget'] );
     }
     public function register_sidebars() {
         register_sidebar( array(
@@ -36,6 +37,9 @@ class Sidebars{
             'before_title' => '<h3 class="widget-title">',
             'after_title' => '</h3>'
         ) );
+    }
+    public function register_clock_widget() {
+        register_widget( 'AQUILA_THEME\inc\Clock_widget' );
     }
 
 }

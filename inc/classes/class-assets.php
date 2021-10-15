@@ -32,9 +32,10 @@ class Assets{
     public function register_scripts() {
         //    Register scripts
         wp_register_script("bootstrap-js", AQUILA_DIR_URI.'/assets/libraries/bootstrap/js/bootstrap.bundle.min.js', [], false, true);
-        wp_register_script("main-js", AQUILA_DIR_URI.'/assets/js/main.js', [], filemtime(get_template_directory().'/assets/js/main.js'), true);
+        wp_register_script("main-js", AQUILA_DIR_URI.'/assets/js/main.js', ['jquery'], filemtime(get_template_directory().'/assets/js/main.js'), true);
 
         //    enqueue scripts
+        wp_enqueue_script('jquery');
         wp_enqueue_script("bootstrap-js");
         wp_enqueue_script("main-js");
     }
