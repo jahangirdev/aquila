@@ -15,6 +15,7 @@ class AQUILA_THEME{
         Menus::get_instance();
         Meta_Boxes::get_instance();
         Sidebars::get_instance();
+        Block_Patterns::get_instance();
     }
     protected function setup_hooks(){
         //actions and filters
@@ -41,7 +42,8 @@ class AQUILA_THEME{
             'script',
             'style'
         ]);
-        add_editor_style();
+        add_theme_support('editor-styles');
+        add_editor_style('assets/css/editor.css');
         add_theme_support('wp-block-styles');
         add_theme_support('align-wide');
         global $content_width;

@@ -19,7 +19,7 @@
             let currHr = curr24Hour % 12;
                 currHr = currHr ? currHr : 12;
 
-            let dayNight = curr24Hour >= 6 || curr24Hour <= 18 ? 'Day' : 'Night';
+            let dayNight = curr24Hour >= 6 || curr24Hour <= 18 ? '🌞' : '🌙';
 
             let stringTime = currHr + ':' + this.numPad(currMin) + ':' + this.numPad(currSec);
             $("#time").text(stringTime);
