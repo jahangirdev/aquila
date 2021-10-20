@@ -16,31 +16,51 @@ class Block_Patterns{
     protected function setup_hooks(){
         //actions and filters
         add_action('init', [$this, 'register_block_patterns']);
+        add_action( 'init', [$this, 'register_block_pattern_categories'] );
     }
     public function register_block_patterns() {
         if( function_exists('register_block_pattern') ) {
+
+
             register_block_pattern(
                 'aquila/cover',
                 [
                     'title' => __('Aquila Cover', 'aquila'),
                     'description' => __( 'Aquila cover block with image and text', 'aquila' ),
-                    'content' => '<!-- wp:cover {"url":"http://localhost/wp-theme/wp-content/uploads/2021/10/Conference_growth-2-.png","id":65,"contentPosition":"center center","align":"wide"} -->
-                                    <div class="wp-block-cover alignwide has-background-dim"><img class="wp-block-cover__image-background wp-image-65" alt="" src="http://localhost/wp-theme/wp-content/uploads/2021/10/Conference_growth-2-.png" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"textAlign":"center","level":1,"fontSize":"huge"} -->
-                                    <h1 class="has-text-align-center has-huge-font-size">Hi, My name is Jahangir Alam</h1>
-                                    <!-- /wp:heading -->
-                                    
-                                    <!-- wp:paragraph {"align":"center"} -->
-                                    <p class="has-text-align-center">I am a professional web developer and wordpress expert. I know HTML, CSS, JavaScript, Bootstrap, JQuery, PHP, Wordpress, Wordpress Theme Development etc. I am reliable, adaptible and self motivated. I can customize and optimize wordpress at any level you may need.</p>
-                                    <!-- /wp:paragraph -->
-                                    
-                                    <!-- wp:buttons {"contentJustification":"center"} -->
-                                    <div class="wp-block-buttons is-content-justification-center"><!-- wp:button {"className":"is-style-outline"} -->
-                                    <div class="wp-block-button is-style-outline"><a class="wp-block-button__link">Hire Me</a></div>
-                                    <!-- /wp:button --></div>
-                                    <!-- /wp:buttons --></div></div>
-                                    <!-- /wp:cover -->',
+                    'categories' => [ 'cover' ],
+                    'content' => $this->get_pattern_content( 'template-parts/patterns/cover' ),
                 ]
             );
+            register_block_pattern(
+                'aquila/two-column',
+                [
+                    'title' => __('Aquila Two Column', 'aquila'),
+                    'description' => __( 'Aquila two columns block with headings and texts', 'aquila' ),
+                    'categories' => ['cover'],
+                    'content' => $this->get_pattern_content( 'template-parts/patterns/two-column' ),
+                ]
+            );
+        }
+    }
+    public function get_pattern_content( $template_path ) {
+        ob_start();
+        get_template_part($template_path);
+        $pattern_content = ob_get_contents();
+        ob_end_clean();
+        return $pattern_content;
+    }
+    public function register_block_pattern_categories() {
+        $pattern_categories = [
+            'cover' => __('Cover', 'aquila'),
+            'carousel' => __('Carousel', 'aquila')
+        ];
+        if( ! empty( $pattern_categories ) && is_array( $pattern_categories ) ) {
+            foreach ( $pattern_categories as $pattern_category => $pattern_category_label ) {
+                register_block_pattern_category(
+                    $pattern_category,
+                    [ 'label' => $pattern_category_label]
+                );
+            }
         }
     }
 
